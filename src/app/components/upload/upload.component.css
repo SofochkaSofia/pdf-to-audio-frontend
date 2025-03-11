@@ -1,0 +1,79 @@
+/* Центрирование карточки */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Центрирование по вертикали */
+}
+
+/* Стили для карточки */
+.upload-card {
+  width: 90%; /* Ширина карточки (90% от ширины экрана) */
+  max-width: 600px; /* Максимальная ширина карточки */
+  padding: 20px; /* Внутренние отступы карточки */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень карточки */
+  border-radius: 8px; /* Скругление углов */
+}
+
+/* Стили для заголовка */
+.header {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  text-align: center; /* Центрирование заголовка */
+}
+
+/* Контейнер для формы */
+.upload-form-container {
+  display: flex;
+  flex-direction: column; /* Элементы друг под другом */
+  align-items: stretch; /* Растягиваем элементы на всю ширину */
+  width: 100%; /* Занимает всю доступную ширину */
+}
+
+/* Стили для формы */
+form {
+  display: flex;
+  flex-direction: column; /* Элементы формы друг под другом */
+  gap: 20px; /* Отступы между элементами */
+}
+
+/* Стили для поля выбора файла */
+.file-input {
+  width: 100%; /* Растягиваем поле выбора файла на всю ширину */
+  padding: 10px; /* Внутренние отступы */
+  border: 1px solid #ccc; /* Граница поля */
+  border-radius: 4px; /* Скругление углов */
+  font-size: 16px; /* Размер текста */
+}
+
+/* Стили для кнопки */
+button {
+  width: 100%; /* Растягиваем кнопку на всю ширину */
+  margin-top: 10px; /* Отступ сверху */
+  padding: 10px; /* Внутренние отступы кнопки */
+  font-size: 16px; /* Размер текста кнопки */
+}
+
+/* Стили для прогресс-бара */
+mat-progress-bar {
+  margin-top: 20px; /* Отступ сверху */
+}
+
+/* Стили для контейнера аудио */
+.audio-container {
+  margin-top: 20px; /* Отступ сверху */
+  text-align: center; /* Центрирование содержимого */
+}
+
+/* Стили для ссылки скачивания */
+.download-link {
+  display: block;
+  margin-top: 10px; /* Отступ сверху */
+  color: #007bff; /* Цвет ссылки */
+  text-decoration: none; /* Убираем подчеркивание */
+  font-size: 16px; /* Размер текста */
+}
+
+.download-link:hover {
+  text-decoration: underline; /* Подчеркивание при наведении */
+}

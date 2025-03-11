@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<div class="center">
+  <mat-card class="upload-card">
+    <mat-card-header class="header">
+      <mat-card-title>Загрузка PDF</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="upload-form-container">
+        <form (ngSubmit)="onSubmit()">
+          <input type="file" (change)="onFileChange($event)" accept=".pdf" #fileInput class="file-input">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!file">
+            Конвертировать в аудио
+          </button>
+        </form>
+
+        <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+        <div *ngIf="audioUrl" class="audio-container">
+          <audio controls>
+            <source [src]="audioUrl" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
+          </audio>
+          <a [href]="audioUrl" download="output.mp3" class="download-link">Скачать аудио</a>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

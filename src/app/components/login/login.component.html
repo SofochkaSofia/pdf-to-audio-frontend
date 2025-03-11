@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<div class="center">
+  <mat-card class="login-card">
+    <mat-card-header class="header">
+      <mat-card-title>Вход</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="login-form-container">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="fill" class="margin">
+            <mat-label>Имя пользователя</mat-label>
+            <input matInput formControlName="username" required>
+            <mat-error *ngIf="loginForm.get('username').invalid">
+              Введите имя пользователя
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="margin">
+            <mat-label>Пароль</mat-label>
+            <input matInput type="password" formControlName="password" required>
+            <mat-error *ngIf="loginForm.get('password').invalid">
+              Введите пароль
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+            Войти
+          </button>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

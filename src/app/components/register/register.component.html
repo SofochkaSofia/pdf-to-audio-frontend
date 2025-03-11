@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<div class="center">
+  <mat-card class="register-card">
+    <mat-card-header class="header">
+      <mat-card-title>Регистрация</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="register-form-container">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="fill" class="margin">
+            <mat-label>Имя пользователя</mat-label>
+            <input matInput formControlName="username" required>
+            <mat-error *ngIf="registerForm.get('username').invalid">
+              Введите имя пользователя
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="margin">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required>
+            <mat-error *ngIf="registerForm.get('email').invalid">
+              Введите корректный email
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="margin">
+            <mat-label>Пароль</mat-label>
+            <input matInput type="password" formControlName="password" required>
+            <mat-error *ngIf="registerForm.get('password').invalid">
+              Введите пароль
+            </mat-error>
+          </mat-form-field>
+
+          <mat-checkbox formControlName="consent" class="margin">
+            Я согласен на обработку персональных данных
+          </mat-checkbox>
+
+          <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
+            Зарегистрироваться
+          </button>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

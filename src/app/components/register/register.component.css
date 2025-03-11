@@ -1,0 +1,43 @@
+/* Центрирование карточки */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Центрирование по вертикали */
+}
+
+.header{
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+/* Контейнер для формы */
+.register-form-container {
+  display: flex;
+  flex-direction: column; /* Элементы друг под другом */
+  align-items: stretch; /* Растягиваем элементы на всю ширину */
+  width: 100%; /* Занимает всю доступную ширину */
+}
+
+/* Стили для формы */
+form {
+  display: flex;
+  flex-direction: column; /* Элементы формы друг под другом */
+  gap: 20px; /* Отступы между элементами */
+}
+
+/* Отступы для полей ввода */
+.mat-form-field {
+  width: 100%; /* Растягиваем поля ввода на всю ширину */
+}
+
+/* Стили для чекбокса */
+.mat-checkbox {
+  margin-bottom: 20px; /* Отступ снизу для чекбокса */
+}
+
+/* Стили для кнопки */
+button {
+  width: 100%; /* Растягиваем кнопку на всю ширину */
+  margin-top: 10px; /* Отступ сверху */
+}
