@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NgIf } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-upload',
@@ -22,7 +23,9 @@ export class UploadComponent {
   isLoading = false;
   audioUrl: string | null = null;
 
-  constructor(private apiService: ApiService) {} // Используем ApiService
+  constructor(private apiService: ApiService,
+    private snackBar: MatSnackBar,
+  ) {} // Используем ApiService
 
   onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -37,15 +40,15 @@ export class UploadComponent {
       const formData = new FormData();
       formData.append('file', this.file);
 
-      // Используем ApiService для загрузки файла
       this.apiService.upload(formData).subscribe(
-        response => {
-          this.audioUrl = response.audioUrl; // Предполагаем, что сервер возвращает URL аудио
+        (response: any) => {
+          this.audioUrl = response.audioUrl; // Предполагаем, что сервер возвращает audioUrl
           this.isLoading = false;
         },
         error => {
-          console.error('Ошибка загрузки файла:', error);
-          this.isLoading = false;
+          this.snackBar.open('Ошибка загрузки файла. Проверьте данные и попробуйте снова.', 'Закрыть', {
+            duration: 3000,
+          });
         }
       );
     }

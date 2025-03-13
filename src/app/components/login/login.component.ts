@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService, // Используем ApiService
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar // Добавьте SnackBar
   ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
@@ -39,11 +41,12 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.apiService.login(this.loginForm.value).subscribe(
         response => {
-          // Успешный вход, перенаправляем на страницу загрузки
           this.router.navigate(['/upload']);
         },
         error => {
-          console.error('Ошибка входа:', error);
+          this.snackBar.open('Ошибка входа. Проверьте данные и попробуйте снова.', 'Закрыть', {
+            duration: 3000,
+          });
         }
       );
     }

@@ -1,24 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root' // Убедитесь, что сервис предоставлен на уровне корня
+  providedIn: 'root'
 })
 export class ApiService {
   private apiUrl = 'http://localhost:5000/api';
 
-  constructor(private http: HttpClient) {} // HttpClient инжектируется здесь
+  constructor(private http: HttpClient) {}
 
   register(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, user);
+    return this.http.post(`${this.apiUrl}/register`, user).pipe(
+      catchError(this.handleError)
+    );
   }
 
   login(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, user);
+    return this.http.post(`${this.apiUrl}/login`, user).pipe(
+      catchError(this.handleError)
+    );
   }
 
   upload(file: FormData): Observable<any> {
-    return this.http.post(`${this.apiUrl}/upload`, file);
+    return this.http.post(`${this.apiUrl}/upload`, file).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.error('Произошла ошибка:', error);
+    return throwError(() => new Error('Что-то пошло не так. Пожалуйста, попробуйте позже.'));
   }
 }
